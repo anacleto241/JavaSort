@@ -11,7 +11,7 @@ import java.util.*;
  *
  * @author fabri
  */
-public class BubbleSort<T>{
+public class BubbleSort<T extends Comparable<T>>{
     private long contaComparacoes;
 
     public long getContaComparacoes() {
@@ -33,5 +33,18 @@ public class BubbleSort<T>{
                 if(comparador.compare(v[j],v[j+1])>0)
                     troca(v,j,j+1);
             }
+    }
+    
+    public void sort(T v[]) {
+        int n = v.length;
+        this.contaComparacoes = 0;
+        for (int fase = 1; fase < n; fase++) {
+            for (int j = 0; j < n - fase; j++) {
+                this.contaComparacoes++;
+                if (v[j].compareTo(v[j + 1]) > 0) {
+                    troca(v, j, j + 1);
+                }
+            }
+        }
     }
 }
